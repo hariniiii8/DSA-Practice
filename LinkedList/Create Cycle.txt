@@ -1,0 +1,13 @@
+static void createCycle(Node head,int a,int b) {
+    int counta = 0,countb = 0;
+    Node temp1 = head;
+    Node temp2 = head;
+    while(counta != a || countb != b) {
+        if(counta != a) 
+        {temp1 = temp1.next; 
+         counta++;}
+        if(countb != b) 
+        {temp2 = temp2.next; countb++;}
+    }
+    temp2.next = temp1;
+}

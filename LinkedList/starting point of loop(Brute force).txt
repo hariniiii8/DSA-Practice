@@ -1,0 +1,15 @@
+public class Solution {
+    public ListNode detectCycle(ListNode head) {
+      HashSet<ListNode> hst=new HashSet<>();
+      while(head!=null)
+      {
+          if(hst.contains(head))
+          {
+              return head;
+          }
+          hst.add(head);
+          head=head.next;
+      }
+      return null;
+    }
+}

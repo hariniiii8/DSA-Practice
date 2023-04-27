@@ -1,0 +1,21 @@
+public static void zerosToEnd(int[] arr) {
+
+        int n = arr.length;
+        int temp[] = new int[n];
+        int k=0;
+        for (int i=0;i<n;i++){
+            if (arr[i]!=0){
+                temp[k]=arr[i];   // index k and i will be different
+                k++;
+            }
+        }
+       
+        while (k<n){
+            temp[k]=0;     // assigning remaining values with 0
+            k++;
+        }
+       for(int i=0;i<n;i++)
+       {
+           System.out.print(temp[i]+" ");
+       }
+    }

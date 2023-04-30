@@ -1,0 +1,33 @@
+class Solution {
+    public int findMin(int[] arr) {
+        int n=arr.length;
+        int start=0;
+        int end=n-1;
+        int res=arr[0];
+        if(arr[start]<=arr[end])     //condition where array is not rotated
+        {
+            return res;               //another condition that can be checked is when array has 1 element
+        }
+       
+        
+        while(start<=end)
+        {
+            int mid=start+(end-start)/2;
+            int next=(mid+1)%n;
+            int prev=(mid+n-1)%n;
+            if(arr[mid]<=arr[next]&&arr[mid]<=arr[prev])
+            {
+                return arr[mid];
+            }
+            else if(arr[start]<=arr[mid]&& arr[mid]>=arr[end]) //second condition is also very important
+            {
+                start=mid+1;
+            }
+            else
+            {
+                end=mid-1;
+            }
+        }
+      return arr[start];
+    }
+}

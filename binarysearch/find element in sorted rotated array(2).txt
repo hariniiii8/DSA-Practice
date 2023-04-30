@@ -1,0 +1,80 @@
+class Solution {
+    
+    public int search(int[] nums, int target) {
+      
+        int start=0;
+        int end=nums.length-1;
+          
+        int min=findMin(nums);
+        if(nums.length==1 && nums[0]==target)
+        {
+            return 0;
+        } 
+        if(nums[0]==target)
+        {
+            return 0;
+        }
+        if(target<=nums[end])
+        {
+            return binSearch(nums,min,end,target);
+        }
+        else if(target>=nums[start])
+        {
+            return binSearch(nums,start,min-1,target);
+        }
+        return -1;
+        
+       
+    }
+
+   public int findMin(int[] arr) {
+        int n=arr.length;
+        int start=0;
+        int end=n-1;
+        int res=arr[0];
+        if(arr[start]<=arr[end])     //condition where array is not rotated
+        {
+            return res;               //another condition that can be checked is when array has 1 element
+        }
+       
+        
+        while(start<=end)
+        {
+            int mid=start+(end-start)/2;
+            int next=(mid+1)%n;
+            int prev=(mid+n-1)%n;
+            if(arr[mid]<=arr[next]&&arr[mid]<=arr[prev])
+            {
+                return mid;
+            }
+            else if(arr[start]<=arr[mid]&& arr[mid]>=arr[end]) //second condition is also very important
+            {
+                start=mid+1;
+            }
+            else
+            {
+                end=mid-1;
+            }
+        }
+      return start;
+    }
+
+    int binSearch(int nums[],int start,int end,int target)
+    {    while(start<=end){
+        int mid=start+(end-start)/2;
+        if(nums[mid]==target)
+        {
+            return mid;
+        }
+        else if(nums[mid]<target)
+        {
+            start=mid+1;
+        }
+        else
+        {
+            end=mid-1;
+        }
+    }
+        return -1;
+    }
+}

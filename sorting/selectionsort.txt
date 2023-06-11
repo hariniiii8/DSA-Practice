@@ -27,3 +27,5 @@ class Solution
 	    }
 	}
 }
+
+//select min and swap

@@ -11,13 +11,21 @@ public int[] searchRange(int[] nums, int target) {
     int start = 0;
     int end = nums.length - 1;
     while(start <= end){ // for first occurence
-        int mid = (start + end) / 2;
-        if(nums[mid] >= target){
-            end = mid - 1;
-        }else{
-            start = mid + 1;
-        }
-        if(nums[mid] == target) idx = mid; //storing mid in index if its equal
+     int mid = (start + end) / 2;
+     if(nums[mid]==target)
+     {
+         idx=mid;
+         end=mid-1;
+     }
+     else if(nums[mid]>target)
+     {
+         end=mid-1;
+     }
+     else
+     {
+         start=mid+1;
+     }
+        
     }
     return idx;
 }
@@ -28,12 +36,21 @@ public int[] searchRange(int[] nums, int target) {
     int end = nums.length - 1;
     while(start <= end){
         int mid = (start + end) / 2;
-        if(nums[mid] <= target){ // for last occurence
-            start = mid + 1;
-        }else{
-            end = mid - 1;
-        }
-        if(nums[mid] == target) idx = mid;
+         if(nums[mid]==target)
+     {
+         idx=mid;
+         start=mid+1;
+     }
+     else if(nums[mid]>target)
+     {
+         end=mid-1;
+     }
+     else
+     {
+         start=mid+1;
+     }
+        
+       
     }
     return idx;
 }

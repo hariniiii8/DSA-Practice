@@ -52,7 +52,7 @@ class Solution {
                 end=mid-1;
             }
         }
-      return start;
+      return arr[start];
     }
 
     int binSearch(int nums[],int start,int end,int target)

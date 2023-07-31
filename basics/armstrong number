@@ -1,0 +1,56 @@
+class Solution {
+
+    static String armstrongNumber(int n){
+
+        // code here
+
+        int cnt = CountNumber(n);//gets the count of digits
+
+        int temp = n;
+
+        int Armstrong_number = 0;
+
+        while(n!=0){
+
+            int res = n % 10;
+
+            Armstrong_number += Math.pow(res,cnt);
+
+            n = n / 10;
+
+        }
+
+        // System.out.print(cnt);
+
+        if(temp == Armstrong_number){
+
+            return "Yes";
+
+        }else{
+
+            return "No";
+
+        }
+
+    }
+
+    
+
+    public static int CountNumber(int n){
+
+        int cnt = 0;
+
+        while(n != 0){
+
+            int res = n % 10;
+
+            n = n / 10;
+
+            cnt++;
+
+        }
+
+        return cnt;
+
+    }
+}

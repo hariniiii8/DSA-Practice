@@ -1,0 +1,26 @@
+class Solution {
+    public List<List<Integer>> generate(int numRows) {
+        List<List<Integer>> res = new ArrayList<List<Integer>>();
+		List<Integer> row, pre = null;
+		for (int i = 0; i < numRows; ++i) {
+			row = new ArrayList<Integer>();
+			for (int j = 0; j <= i; ++j)
+				if (j == 0 || j == i)
+					row.add(1);
+				else
+					row.add(pre.get(j - 1) + pre.get(j));
+			pre = row;
+			res.add(row);
+		}
+		return res;
+    }
+}
+// THE NTH ROW OF PASCAL'S TRIANGLE WILL HAVE N ELEMENTS
+// 1st row has 1, 2nd has 2 etc
+// 1st row has 1 column
+//2nd row has 2 columns etc
+
+//4c1=4/1,4c2 is 4*3/1*2
+// Basically if 1 is there then only one number in nume and deno
+//if 2 is there then 2 in denom amd 2 in nume
+//4c3=4*3*2/1*2*3

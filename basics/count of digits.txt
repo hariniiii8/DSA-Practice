@@ -1,0 +1,20 @@
+class Solution{
+    static int evenlyDivides(int N){
+        int last,count=0,temp=N;
+        while(N>0)
+        {
+          last=N%10; //getting hold of last digit
+          if(last==0) //if the last digit is 0, continue
+          {
+              N=N/10;
+              continue;
+          }
+          else if(temp%last==0) //if the last digit divides N , then increase count
+          {
+              count++;
+          }
+          N=N/10;  //getting the remaining number except the last digit
+        }
+        return count;
+    }
+}

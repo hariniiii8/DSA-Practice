@@ -1,0 +1,24 @@
+class Solution {
+    public static List<String> generateBinaryStrings(int n) {
+        List<String> list = new ArrayList<>();
+        generateBinaryStrings(n, "", list);
+        return list;
+    }
+
+    private static void generateBinaryStrings(int n, String curr, List<String> list) {
+        if (curr.length() == n) {
+            list.add(curr);
+            return;
+        }
+
+        // Add "0" without constraint
+        generateBinaryStrings(n, curr + "0", list);
+
+        // Add "1" only if the previous character is not "1"
+        if (curr.isEmpty() || curr.charAt(curr.length() - 1) != '1') {
+            generateBinaryStrings(n, curr + "1", list);
+        }
+    }
+
+  
+}

@@ -1,0 +1,28 @@
+class Solution
+{ 
+    static void reverse(Stack<Integer> s)
+    {
+        if(s.size()==0)
+        {
+            return ;
+        }
+        int topEl=s.pop();
+        reverse(s);
+         insert(s,topEl);
+    }
+    
+   static Stack<Integer> insert(Stack<Integer> s, int el)
+    {
+        if(s.size()==0)
+        {
+            s.push(el);
+            return s;
+        }
+        else{
+            int topEl=s.pop();
+            insert(s,el);
+            s.push(topEl);
+            return s;
+        }
+    }
+}

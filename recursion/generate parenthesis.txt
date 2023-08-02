@@ -1,0 +1,28 @@
+class Solution {
+public List<String> generateParenthesis(int n) {
+    List<String> list = new ArrayList<>();
+    int open = n, close = n;
+    String op = "";
+    solve(open, close, op, list);
+    return list;
+}
+
+public void solve(int open, int close, String op, List<String> list) {
+    if (open == 0 && close == 0) {
+        list.add(op);
+        return;
+    }
+
+    if (open != 0) {
+        String op1 = op + "(";
+        solve(open - 1, close, op1, list);
+    }
+
+    // when closed is greater than open, we have the closing parentheses choice in the output.
+    if (close > open) {
+        String op2 = op + ")";
+        solve(open, close - 1, op2, list);
+    }
+}
+
+}
